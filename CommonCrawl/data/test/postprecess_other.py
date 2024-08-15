@@ -357,12 +357,12 @@ def extractor():
             df.loc[idx,f'{model_name}_relation'] = relation
             df.loc[idx,f'{model_name}_entity'] = entity
     # 抽取gemini標記內容
-    df = pd.read_csv("./CommonCrawl/data/test/gemini_test.csv", encoding='utf-8')
+    df = pd.read_csv("./CommonCrawl/data/test/gemini_annotated.csv", encoding='utf-8')
     gemini_w_relate = df[df['relation'] == '有']
     df.rename(columns={'output': 'gemini_output', 'relation': 'gemini_has_relation'}, inplace=True)
     extract_label(gemini_w_relate,"gemini")
 
-    df_gpt = pd.read_csv("./CommonCrawl/data/test/gpt35_p3.csv", encoding='utf-8')
+    df_gpt = pd.read_csv("./CommonCrawl/data/test/gpt35_annotated.csv", encoding='utf-8')
     df = pd.merge(df, df_gpt[['output', 'relation']], left_index=True, right_index=True)
     df.rename(columns={'output': 'gpt_output', 'relation': 'gpt_has_relation'}, inplace=True)
 
@@ -426,7 +426,7 @@ def temp_cross_comparison():
     df2.to_csv(r'H:\我的雲端硬碟\RelationExtration\CommonCrawl\data\test\test_other.csv', encoding='utf-8',index=True)
 
 if __name__ == '__main__':
-    # extractor()
+    extractor()
     # path = "./CommonCrawl/data/test/test_other.csv"
     # relation_classifier(path)
     # update_relation(path)

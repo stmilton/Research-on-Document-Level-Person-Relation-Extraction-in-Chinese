@@ -50,15 +50,15 @@ def main():
         #                 {"role": "user", "content": f"文章如下:\n{document}"}]
         
         # p3
-        # message_text = [
-        #     {"role": "user", "content": f"請幫我找出以下文章中是否包含兩位具有明確姓名的人之間常見的人際關係(例如:親屬、師生、同事、同學...)?且兩位關係人皆必須有明確名字，只有稱謂的不算。\n若無關係直接回答:無 即可\n若有請依格式回答:有 (人名,人名,關係),(人名,人名,關係)...列舉出所有關係\n文章如下:\n{document}"}
-        #     ]
         message_text = [
-            {"role": "user", "content": f"""請幫我找出以下文章中是否包含兩位具有明確姓名的人之間常見的人際關係(例如:親屬、師生、同事、其他)，且兩位關係人皆必須有明確名字，只有稱謂的不算。
-若無關係直接回答:無 即可。
-若有請依格式回答:有 (人名,人名,關係),(人名,人名,關係)...列舉出所有關係，小括號中必須包含2個人名實體和1個關係。
-文章如下:
-    [Document_start] {document} [Document_end]"""}]
+            {"role": "user", "content": f"請幫我找出以下文章中是否包含兩位具有明確姓名的人之間常見的人際關係(例如:親屬、師生、同事、同學...)?且兩位關係人皆必須有明確名字，只有稱謂的不算。\n若無關係直接回答:無 即可\n若有請依格式回答:有 (人名,人名,關係),(人名,人名,關係)...列舉出所有關係\n文章如下:\n{document}"}
+            ]
+#         message_text = [
+#             {"role": "user", "content": f"""請幫我找出以下文章中是否包含兩位具有明確姓名的人之間常見的人際關係(例如:親屬、師生、同事、其他)，且兩位關係人皆必須有明確名字，只有稱謂的不算。
+# 若無關係直接回答:無 即可。
+# 若有請依格式回答:有 (人名,人名,關係),(人名,人名,關係)...列舉出所有關係，小括號中必須包含2個人名實體和1個關係。
+# 文章如下:
+#     [Document_start] {document} [Document_end]"""}]
         retry_count = 5  # 设置最大重试次数
         for _ in range(retry_count):
             try:
@@ -99,7 +99,7 @@ def main():
             relation.append("請重新嘗試")
         # evidences.append(extract_text(response_text))
 
-    output_file_path = "./CommonCrawl/data/test/gpt35_p3"
+    output_file_path = "./CommonCrawl/data/test/gpt35_annotated"
         
     df = pd.DataFrame(
             {

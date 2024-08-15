@@ -1,0 +1,12 @@
+x_*
+__pycache__/
+sota_ner/test_ckip_expansion_copy.csv
+big_bird/
+CommonCrawl/tst.py
+*checkpoint*
+CommonCrawl/data/final/
+*.csv
+*.json
+*.jsonl
+*__init__*
+*.rar
