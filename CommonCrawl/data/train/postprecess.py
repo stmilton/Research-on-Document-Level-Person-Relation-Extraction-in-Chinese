@@ -505,11 +505,11 @@ def check_format(input_string):
     
 
 if __name__ == '__main__':
-    # combined()
-    # gpt_inference()
-    # extractor()
-    # relation_classifier()
-    # update_relation()
-    # cross_comparison()
+    combined()
+    gpt_inference()
+    extractor()
+    relation_classifier()
+    update_relation()
+    cross_comparison()
     union_label()
     split()

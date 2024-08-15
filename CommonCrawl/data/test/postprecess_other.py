@@ -427,10 +427,10 @@ def temp_cross_comparison():
 
 if __name__ == '__main__':
     extractor()
-    # path = "./CommonCrawl/data/test/test_other.csv"
-    # relation_classifier(path)
-    # update_relation(path)
-    # # temp_cross_comparison()
-    # cross_comparison(path)
+    path = "./CommonCrawl/data/test/test_other.csv"
+    relation_classifier(path)
+    update_relation(path)
+    # temp_cross_comparison()
+    cross_comparison(path)
     union_label(path)
     
