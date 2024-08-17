@@ -6,6 +6,18 @@
 4. 程式中的檔案路徑請依照你下載後存放的路徑自行更改
 
 # 程式碼
+- evalute.py:其中evalute_ternary用來評估三元組效能; evalute_ner_pair評估二元組效能; evalute_ner評估NER效能(以實體個數為單位)，使用方法可參考下方main的方式。
+- mt5.py、gemma.py、taide_8b.py:都是模型檔，直接執行只是測試一筆資料，主要的generate_text方法定義在這裡。
+- gemma_lora.py: 用lora微調gemma，進行通用式生成微調，效果不佳後來沒放進論文。
+- t5_finetune.py: 進行通用式生成微調mT5，會產生一個checkpoint存檔。
+- t5_finetune_fold.py: 將test data切割成5等份，做5fold訓練，只有讀取的資料不同，其餘和t5_finetune.py相同
+- inference.py: 將訓練好的checkpoint在test data產生預測資料，不同模型ckpt使用不同Model的，可用mT5、gemma、taide，可參考下方註解的程式碼。
+- postprecess.py: 將預測資料進行後處理，去除重覆值及格式錯誤值，並新增指定col
+**通用式生成的執行順序: t5_finetune.py/t5_finetune_fold.py -> inference.py -> postprecess.py -> evalute.py**
+- t5_finetune_re.py: 進行pipeline時的關係擷取步驟訓練，會產生一個checkpoint存檔。
+- re_inference.py: 將t5_finetune_re.py訓練好的checkpoint在test data產生預測資料。
+**pipeline的執行順序: t5_finetune_re.py -> re_inference.py -> postprecess.py -> evalute.py**
+
 
 ## CommonCrawl
 該資料夾中主要為資料處理、標記、統計程式碼

@@ -9,7 +9,6 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.model_selection import KFold
-
 import os
 
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
@@ -74,8 +73,6 @@ class MyGenerationDataset(Dataset):
 #     valid_df.to_csv(f"./CommonCrawl/data/kfold/{i+1}/valid.csv", encoding='utf-8', index=True)
 #     test_df.to_csv(f"./CommonCrawl/data/kfold/{i+1}/test.csv", encoding='utf-8', index=True)
 
-# train_df = pd.read_csv("./CommonCrawl/data/test/split_train.csv",encoding='utf-8')
-# valid_df = pd.read_csv("./CommonCrawl/data/test/split_valid.csv",encoding='utf-8')  
 train_df = pd.read_csv("./CommonCrawl/data/train/train_ckip_expansion.csv",encoding='utf-8')
 valid_df = pd.read_csv("./CommonCrawl/data/train/valid_ckip_expansion.csv",encoding='utf-8')
 train_df = train_df[(train_df["merge_label_1024"].notnull())&(train_df["merge_label_1024"] != "[]")]
